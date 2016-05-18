@@ -26,12 +26,6 @@ import time
 
 import threading as t
 
-TIME = 180 #Sleep time for the next verification on RSS
-source = [] #Armazena todos os feeds de notícias
-
-mongo_db = None
-connect_to_mongo = 'mongodb1.ctweb.inweb.org.br'
-
 socket.setdefaulttimeout(300)
 
 #Browser configuration
@@ -46,7 +40,13 @@ browser.set_handle_refresh(mechanize._http.HTTPRefreshProcessor(), max_time=1)
 
 #Configure the user-agent for the server
 browser.addheaders = [('User-agent', 'Mozilla/5.0 (X11;\ U; Linux i686; en-US; rv:1.9.0.1) Gecko/2008071615\Fedora/3.0.1-1.fc9 Firefox/3.0.1')]
-    
+
+TIME = 180 #Sleep time for the next verification on RSS
+source = []
+
+mongo_db = None
+connect_to_mongo = "mongodb1.ctweb.inweb.org.br"
+
 class ThreadCrawler(t.Thread):
     '''
     Class that storage the thread information for each rss/feed. 
